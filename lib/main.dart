@@ -5,8 +5,14 @@ void main() => runApp(
     home: MahiCard(),
   )
 );
-class MahiCard extends StatelessWidget {
+class MahiCard extends StatefulWidget {
 
+  @override
+  State<MahiCard> createState() => _MahiCardState();
+}
+
+class _MahiCardState extends State<MahiCard> {
+  int currLevel=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +28,19 @@ class MahiCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[800],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            currLevel+=1;
+          });
+        },
+        child:Icon(
+          Icons.add,
+          color: Colors.amber,
+        ),
+        backgroundColor: Colors.grey,
+
       ),
       body:Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -50,8 +69,9 @@ class MahiCard extends StatelessWidget {
             Text(
               'MAHI AKHTAR',
               style: TextStyle(
-                color: Colors.deepOrangeAccent,
-                fontSize: 24.0,
+                color: Colors.amber,
+                fontSize: 27.0,
+                fontFamily: 'IndieFlower',
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -65,7 +85,7 @@ class MahiCard extends StatelessWidget {
             ),
             SizedBox(height: 10.0,),
             Text(
-              '101',
+              '$currLevel',
               style: TextStyle(
                 color: Colors.lightGreenAccent,
                 fontSize: 30.0,
@@ -88,6 +108,24 @@ class MahiCard extends StatelessWidget {
                 ),
               ],
             ) ,
+            Row(
+              children: <Widget>[
+                Icon(
+                  Icons.open_in_browser,
+                  color: Colors.grey,
+                ),
+                SizedBox(width: 10.0,),
+                Text(
+                  'www.shoaibisa.tech',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+
+                ),
+              ],
+            ),
+
           ],
         ),
       ),
